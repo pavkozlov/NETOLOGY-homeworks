@@ -129,3 +129,12 @@ while True:
         break
     else:
         print("Такой команды не найдено, попробуйте ещё раз")
+
+
+def get_all_names(documents):
+    try:
+        for document in documents:
+            print(document["name"])
+    except KeyError:
+        print("В документе не указано имя")
+
