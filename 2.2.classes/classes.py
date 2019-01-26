@@ -2,9 +2,8 @@ class Animal:
     def __init__(self, name, weight):
         self.name = name
         self.weight = weight
-        self.satiety = 5  # Уровень сытости. 10 - максимально сыт, 0 - максимально голоден
-        print(self.name, "говорит: ",end="")
-        self.say_hello()
+        self.satiety = 5
+
     def feed(self):
         self.satiety += 1
 
@@ -35,7 +34,7 @@ class Hen(Birds):
 
 
 class Cow(Animal):
-    milk = 3  # литры
+    milk = 3
 
     def collect_milk(self):
         if self.milk:
@@ -52,7 +51,6 @@ class Sheep(Animal):
 
     def collect_wool(self):
         if self.wool:
-            print("Подстригли!")
             self.wool = False
         else:
             print("Шерсть не выросла!")
@@ -62,7 +60,7 @@ class Sheep(Animal):
 
 
 class Goat(Animal):
-    milk = 3  # литры
+    milk = 3
 
     def collect_milk(self):
         if self.milk:
@@ -96,6 +94,8 @@ total_weight = 0
 max_weight = 0
 
 for animal in uncle_joes_farm:
+    print("{} приветствует нас: ".format(animal.name), end='')
+    animal.say_hello()
     total_weight += animal.weight
     if animal.weight > max_weight:
         max_weight = animal.weight
