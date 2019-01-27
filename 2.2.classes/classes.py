@@ -92,6 +92,7 @@ uncle_joes_farm = [white, grey, coco, kukareku, kryakva, manya, barashek, kudrya
 
 total_weight = 0
 max_weight = 0
+heavy_animal = ""
 
 for animal in uncle_joes_farm:
     print("{} приветствует нас: ".format(animal.name), end='')
@@ -99,6 +100,7 @@ for animal in uncle_joes_farm:
     total_weight += animal.weight
     if animal.weight > max_weight:
         max_weight = animal.weight
+        heavy_animal = animal.name
     animal.feed()
     if type(animal) == Goose or type(animal) == Duck or type(animal) == Hen:
         animal.collect_eggs()
@@ -107,5 +109,5 @@ for animal in uncle_joes_farm:
     if type(animal) == Sheep:
         animal.collect_wool()
 
-print("Максимальный вес животного: ", max_weight)
+print("Максимальный вес имеет {}: ".format(heavy_animal), max_weight)
 print("Общий вес: ", total_weight)
