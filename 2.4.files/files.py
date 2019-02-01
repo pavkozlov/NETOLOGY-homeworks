@@ -1,19 +1,21 @@
-units_list = ['ingredient_name', 'quantity', 'measure']
-cook_book = {}
-with open('cook_book.txt', 'r', encoding='UTF-8') as f:
-    for line in f:
-        name = line.strip()
-        count = f.readline().strip()
-        for i in range(int(count)):
-            ingredient_list = dict(zip(units_list, f.readline().strip().split('|')))
-            if cook_book.get(name) is not None:
-                cook_book[name].append(ingredient_list)
-            else:
-                cook_book[name] = [ingredient_list]
-        f.readline()
+def get_dict_from_file(filename):
+    units_list = ['ingredient_name', 'quantity', 'measure']
+    cook_book = {}
+    with open(filename, 'r', encoding='UTF-8') as f:
+        for line in f:
+            name = line.strip()
+            count = f.readline().strip()
+            for i in range(int(count)):
+                ingredient_list = dict(zip(units_list, f.readline().strip().split('|')))
+                if cook_book.get(name) is not None:
+                    cook_book[name].append(ingredient_list)
+                else:
+                    cook_book[name] = [ingredient_list]
+            f.readline()
+    return cook_book
 
 
-def get_shop_list_by_dishes(dishes, person_count):
+def get_shop_list_by_dishes(dishes, person_count, cook_book):
     result = {}
     for dish in cook_book:
         if dish in dishes:
@@ -26,4 +28,4 @@ def get_shop_list_by_dishes(dishes, person_count):
     return result
 
 
-get_shop_list_by_dishes(['Запеченный картофель', 'Омлет'], 20)
+get_shop_list_by_dishes(['Запеченный картофель', 'Омлет'], 20, get_dict_from_file('cook_book.txt'))
