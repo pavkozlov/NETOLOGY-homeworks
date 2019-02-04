@@ -17,9 +17,10 @@ def get_descriptions(filename):
 def get_top(words_list, top):
     count_dict = dict()
     for words in words_list:
-        count_dict[words] = words_list.count(words)
+        count_dict[words.lower()] = words_list.count(words)
     count_dict = sorted(count_dict, key=count_dict.get, reverse=True)
     return count_dict[:top]
 
 
-pprint(get_top(get_descriptions('newsafr.json'), 10))
+if __name__ == 'main':
+    pprint(get_top(get_descriptions('newsafr.json'), 10))

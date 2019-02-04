@@ -1,5 +1,6 @@
 import xml.etree.ElementTree as ET
 from pprint import pprint
+from test_json import get_top
 
 
 def get_descriptions(filename):
@@ -14,12 +15,5 @@ def get_descriptions(filename):
     return words_list
 
 
-def get_top(words_list, top):
-    count_dict = dict()
-    for words in words_list:
-        count_dict[words] = words_list.count(words)
-    count_dict = sorted(count_dict, key=count_dict.get, reverse=True)
-    return count_dict[:top]
-
-
-pprint(get_top(get_descriptions('newsafr.xml'), 10))
+if __name__ == 'main':
+    pprint(get_top(get_descriptions('newsafr.xml'), 10))
