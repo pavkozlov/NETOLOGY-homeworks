@@ -11,7 +11,7 @@ def get_descriptions(filename):
     for descriptions in descriptions:
         for words in descriptions.text.strip().split():
             if len(words) > 6:
-                words_list.append(words)
+                words_list.append(words.lower())
     return words_list
 
 
