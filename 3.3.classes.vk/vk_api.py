@@ -41,7 +41,7 @@ class User:
         user_list = []
         for item in result_list:
             user_list.append(User(item))
-        print(f'У {self.name} и {other.name} следующие общие друзья: ')
+        print(f'У {self.name} и {other.name} следующие общие друзья ({len(user_list)}):')
         return user_list
 
     def __str__(self):
