@@ -7,11 +7,8 @@ def write_to_file(translated_text, filename):
 
 
 def get_from_file(file):
-    result = ''
     with open(file, encoding="utf-8") as f:
-        for lines in f:
-            result += lines
-    return result.strip()
+        return f.read().strip()
 
 
 def translate_it(in_file, from_lang, to_lang, out_file):
